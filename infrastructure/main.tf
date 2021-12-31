@@ -28,7 +28,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "aws-fargate-project-vpc"
+    Name = "${var.project_name}-vpc"
   }
 }
 
@@ -40,6 +40,7 @@ resource "aws_subnet" "public_1" {
 
   tags = {
     "Name" = "public-subnet-1"
+    "kubernetes.io/cluster/eks-argo-cd" = "shared"
   }
 }
 
@@ -51,6 +52,7 @@ resource "aws_subnet" "public_2" {
 
   tags = {
     "Name" = "public-subnet-2"
+    "kubernetes.io/cluster/eks-argo-cd" = "shared"
   }
 }
 
